@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<div class="home-flex-container">
+    <div class="home-content">
+        <h1>Welcome to FlexTask!</h1>
+        <p>FlexTask is a modern and simple <strong>To-Do List</strong> application. Easily add, edit, complete, or delete your tasks. All your data is securely stored and the app is fully responsive.</p>
+        <ul>
+            <li>Add, edit, and delete tasks</li>
+            <li>Mark tasks as completed</li>
+            <li>View active and completed tasks separately</li>
+            <li>Modern and mobile-friendly design with Flexbox</li>
+            <li>Data stored in MS SQL LocalDB</li>
+        </ul>
+        <a class="btn btn-go-tasks" href="@Url.Action("Index", "Tasks")">Go to Task List</a>
+    </div>
+</div>
+<style>
+.home-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+.home-content {
+    background: #222;
+    color: #fff;
+    padding: 2rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    max-width: 500px;
+    text-align: center;
+}
+.home-content h1 {
+    margin-bottom: 1rem;
+}
+.home-content ul {
+    text-align: left;
+    margin: 1rem auto 2rem auto;
+    max-width: 350px;
+}
+</style>

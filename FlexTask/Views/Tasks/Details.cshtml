@@ -1,0 +1,37 @@
+@model FlexTask.Models.TodoTask
+@{
+    ViewData["Title"] = "Task Details";
+}
+<h2 style="text-align:center;">Task Details</h2>
+<div class="task-details">
+    <div><strong>Title:</strong> @Model.Title</div>
+    <div><strong>Description:</strong> @Model.Description</div>
+    <div><strong>Due Date:</strong> @(Model.DueDate?.ToShortDateString() ?? "-")</div>
+    <div><strong>Status:</strong> @(Model.IsCompleted ? "Completed" : "Active")</div>
+    <div><strong>Created At:</strong> @Model.CreatedAt.ToShortDateString()</div>
+    <div class="task-details-actions">
+        <a class="btn btn-edit" href="@Url.Action("Edit", new { id = Model.Id })">Edit</a>
+        <a class="btn btn-delete" href="@Url.Action("Delete", new { id = Model.Id })">Delete</a>
+        <a class="btn btn-back" href="@Url.Action("Index")">Back</a>
+    </div>
+</div>
+@section Styles {
+<style>
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 2rem auto;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.task-details-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+</style>
+} 

@@ -1,0 +1,62 @@
+@model IEnumerable<FlexTask.Models.TodoTask>
+@{
+    ViewData["Title"] = "Task List";
+}
+<div class="page-center">
+    <h2>Task List</h2>
+    <a class="btn" href="@Url.Action("Create")">+ Add Task</a>
+    <div class="tasks-flex-container">
+        <div class="tasks-section">
+            <h3>Active Tasks</h3>
+            <div class="tasks-list">
+            @if (!Model.Any(t => !t.IsCompleted)) {
+                <div class="alert alert-info">No active tasks.</div>
+            } else {
+                @foreach (var item in Model.Where(t => !t.IsCompleted)) {
+                    <div class="task-item">
+                        <div>
+                            <strong>@item.Title</strong><br />
+                            <span>@item.Description</span><br />
+                            <span>Due Date: @(item.DueDate?.ToShortDateString() ?? "-")</span>
+                        </div>
+                        <div class="task-actions">
+                            <form asp-action="ToggleComplete" asp-route-id="@item.Id" method="post" style="display:inline">
+                                <button class="btn btn-completed" title="Complete">✓</button>
+                            </form>
+                            <a class="btn btn-edit" href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
+                            <a class="btn btn-details" href="@Url.Action("Details", new { id = item.Id })">Details</a>
+                            <a class="btn btn-delete" href="@Url.Action("Delete", new { id = item.Id })">Delete</a>
+                        </div>
+                    </div>
+                }
+            }
+            </div>
+        </div>
+        <div class="tasks-section">
+            <h3>Completed Tasks</h3>
+            <div class="tasks-list">
+            @if (!Model.Any(t => t.IsCompleted)) {
+                <div class="alert alert-light">No completed tasks.</div>
+            } else {
+                @foreach (var item in Model.Where(t => t.IsCompleted)) {
+                    <div class="task-item completed">
+                        <div>
+                            <strong>@item.Title</strong><br />
+                            <span>@item.Description</span><br />
+                            <span>Due Date: @(item.DueDate?.ToShortDateString() ?? "-")</span>
+                        </div>
+                        <div class="task-actions">
+                            <form asp-action="ToggleComplete" asp-route-id="@item.Id" method="post" style="display:inline">
+                                <button class="btn btn-mark-active" title="Mark Active">↺</button>
+                            </form>
+                            <a class="btn btn-edit" href="@Url.Action("Edit", new { id = item.Id })">Edit</a>
+                            <a class="btn btn-details" href="@Url.Action("Details", new { id = item.Id })">Details</a>
+                            <a class="btn btn-delete" href="@Url.Action("Delete", new { id = item.Id })">Delete</a>
+                        </div>
+                    </div>
+                }
+            }
+            </div>
+        </div>
+    </div>
+</div> 

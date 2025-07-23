@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FlexTask</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FlexTask.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/logo.ico" />
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a class="nav-brand" asp-area="" asp-controller="Home" asp-action="Index">FlexTask</a>
+                <ul class="nav-links">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Tasks" asp-action="Index">Tasks</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+                    <li><a asp-area="" asp-controller="Contacts" asp-action="Contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="main-container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="main-footer">
+        <div>
+            &copy; 2025 - FlexTask - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Styles", required: false)
+</body>
+</html>
