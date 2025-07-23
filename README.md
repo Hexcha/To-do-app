@@ -1,0 +1,1 @@
+A to do app made with ASP.net.You can add tasks, remove them, mark them as done, edit them. It uses localdb as database. It has 2 databases: contact infos (you cant interact it with in the site) and task list. 
